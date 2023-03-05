@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jve-simple"
+version = "0.0.1"
+authors = [
+    {name = "Jan Vium Enghoff", email = "jan.jve@gmail.com"},
+]
+description = "Simple package"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  'black',
+  'pytest',
+]
+
+[project.scripts]
+jve-run = "jve_simple.main:run"
+
+# ... other project metadata fields as specified in:
+#     https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
