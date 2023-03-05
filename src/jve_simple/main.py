@@ -1,6 +1,3 @@
-from collections import defaultdict, deque
-
-
 class Graph:
     def __init__(self, adjacency_list: dict[list[str]]) -> None:
         self.adjacency_list = adjacency_list
@@ -16,7 +13,7 @@ class Graph:
 
     def topological_sort(self):
         def dfs(node: str):
-            nonlocal queue, visited
+            nonlocal stack, visited
 
             # Mark node as visited
             visited.add(node)
@@ -27,15 +24,15 @@ class Graph:
                     dfs(prev_node)
 
             # Must appear
-            queue.append(node)
+            stack.append(node)
 
-        queue = deque()
+        stack = []
         visited = set()
         # Use each unvisited node as source if they have no already been visited
         for source_node in self.predecessors.keys():
             if source_node not in visited:
                 dfs(source_node)
-        return list(queue)
+        return stack
 
 
 def run():
